@@ -4,24 +4,12 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Please type number");
             int number = Convert.ToInt32(Console.ReadLine());
-            int secondNum = 0;
-            int numCopy = number;
-            int secCopy = number;
-            int result = 0;
-            int count = 0;
-            while(number > 0)
-            {
-                count++;
-                number = number / 10;
-            }
-            while (numCopy > 0)
-            {
-                secondNum = numCopy % 10;
-                result += (int)Math.Pow(secondNum, count);
-                numCopy = numCopy / 10;
-            }
-            if(secCopy == result)
+            int count = Counter(number, 0);
+
+
+            if (number == NumberCheck(number, count))
             {
                 Console.WriteLine("True");
             }
@@ -29,8 +17,27 @@
             {
                 Console.WriteLine("Sorry False");
             }
-
-
+        }
+        public static int Counter(int number, int count)
+        {
+            while (number > 0)
+            {
+                count++;
+                number = number / 10;
+            }
+            return count;
+        }
+        public static int NumberCheck(int number, int count)
+        {
+            int result = 0;
+            while (number > 0)
+            {
+                int secondNum = number % 10;
+                result += (int)Math.Pow(secondNum, count);
+                number = number / 10;
+            }
+            return result;
         }
     }
+
 }
